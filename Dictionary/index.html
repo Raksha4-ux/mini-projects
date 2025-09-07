@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dictionary</title>
+  <style>
+    
+
+
+audio {
+  width: 250px;
+  outline: none;
+  
+}
+
+    #loading {
+  display: none;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #444;
+}
+
+    *{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body{
+      text-align: center;
+      background-color: rgb(250, 250, 185);
+    }
+    input{
+      border: solid 2px black;
+      font-size: 20px;
+      border-radius: 30px;
+      padding: 20px;
+      background-color: rgb(253, 253, 218);
+    }
+    button{
+      box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.2);
+      color:  rgb(249, 249, 207);
+      background-color: rgb(237, 184, 77);
+      border: none;
+      padding: 10px 20px;
+      font-size: 20px;
+      transition: box-shadow .5s, transform .4s;
+      border-radius: 10px;
+      border:2px solid rgb(255, 231, 184);
+    }
+    button:hover{
+      transform: scale(1.1);
+    }
+    button:active{
+      box-shadow: none;
+    }
+    #result{
+      margin: 30px auto;
+      width: 60%;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Type the word to search for its meaning 😊</h1>
+  <input type="text" id="word" placeholder="Type the word">
+  <br><br>
+  <button>Search</button>
+<div id="loading">⏳ Loading...</div>
+
+  <div id="result"></div>
+ 
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+  <script>
+    const resultDiv = document.querySelector("#result");
+    const url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+    const btn = document.querySelector("button");
+
+    btn.addEventListener("click",  (event) => {
+ 
+    getWord();  
+  
+});
+    const input = document.querySelector("input");
+
+input.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    getWord(); 
+  }
+});
+
+
+const loading = document.querySelector("#loading");
+
+async function getWord() {
+  const inp = input.value.trim();
+  if (!inp) return alert("Please type a word!");
+
+  resultDiv.innerHTML = "";
+  loading.style.display = "block";  // show spinner
+
+  try {
+    const response = await axios.get(url + inp);
+    const entry = response.data[0];
+    show(entry);
+  } catch (e) {
+    resultDiv.innerHTML = `<p style="color:red">❌ Word not found. Try another.</p>`;
+  } finally {
+    loading.style.display = "none";  // hide spinner after response
+  }
+}
+
+
+   
+
+    function show(entry) {
+      
+      const heading = document.createElement("h3");
+      heading.textContent = `Definitions for "${entry.word}" (pronounced as "${entry.phonetic || "N/A"}")`;
+      resultDiv.appendChild(heading);
+
+     
+      if (entry.phonetics && entry.phonetics.length > 0) {
+        const audioObj = entry.phonetics.find(p => p.audio);
+        if (audioObj) {
+          const audioWrapper = document.createElement("div");
+          audioWrapper.className = "audio-box";
+          const audio = document.createElement("audio");
+          audio.controls = true;
+          audio.src = audioObj.audio;
+          audioWrapper.appendChild(audio);
+          resultDiv.appendChild(audioWrapper);
+         
+        }
+      }
+
+     
+      entry.meanings.forEach(m => {
+        const part = document.createElement("p");
+        part.innerHTML = `<u><b>${m.partOfSpeech}</b></u>`;
+        resultDiv.appendChild(part);
+
+        const ul = document.createElement("ul");
+        m.definitions.forEach(d => {
+          const li = document.createElement("li");
+          li.textContent = d.definition;
+          ul.appendChild(li);
+        });
+        resultDiv.appendChild(ul);
+      });
+    }
+  </script>
+</body>
+</html>
