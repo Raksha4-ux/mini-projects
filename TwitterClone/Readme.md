@@ -7,8 +7,6 @@ It lets you post tweets, view them in a timeline, and delete them.
 ---
 
 
----
-
 ## ⚡ Features
 
 - ✍️ Add new tweets  
