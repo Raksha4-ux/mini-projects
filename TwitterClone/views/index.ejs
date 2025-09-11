@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style2.css">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    nav{
+      margin-bottom: 80px;
+    }
+    .menu-btn {
+      color: white;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      user-select: none;
+    }
+    .tweet {
+  position: relative;  
+  background: #000;    
+  color: white;         
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+     .menu {
+      display: none;
+      position: absolute;
+      top: 30px;
+      right: 10px;
+      background: rgb(0, 0, 0);
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      z-index: 100;
+    }
+
+    .menu a {
+      display: block;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .menu a:hover {
+      background: #000000;
+    }
+
+    /* Show menu when active */
+    .menu.show {
+      display: inline-block;
+    }
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar" style="position: fixed;">
+      <div class="logo"> 
+        <i class="fa-brands fa-x-twitter"></i></div>
+      <nav>
+        <ul>
+          <li><i class="fa-solid fa-house"></i></li>
+          <li><i class="fa-solid fa-magnifying-glass"></i></li>
+          <li><i class="fa-regular fa-bell"></i></li>
+          <li><i class="fa-regular fa-envelope"></i></li>
+          <li><i class="fa-regular fa-user"></i></li>
+          <li><i class="fa-solid fa-gear"></i></li>
+        </ul>
+      </nav>
+      
+      <div class="profile">r</div>
+    </aside>
+
+    <!-- Feed -->
+    <main class="feed" style="margin-left: 100px; margin-right: 10px;">
+      <!-- Top navigation (For you / Following) -->
+      <div class="feed-header">
+        <div class="tab active">For you</div>
+        <div class="tab">Following</div>
+      </div>
+
+      <!-- What's happening box -->
+       <form method="post" action="/tweets">
+      <div class="whats-happening">
+        <div class="wh-box">
+          <div class="profile-pic">r</div>
+          <input type="text" name="content" placeholder="What’s happening?">
+        </div>
+        <div class="wh-actions">
+          <div class="icons">
+            <i class="fa-regular fa-image"></i>
+            <i class="fa-solid fa-film"></i>
+            <i class="fa-solid fa-chart-line"></i>
+            <i class="fa-regular fa-face-smile"></i>
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          
+          <button class="post-btn">Post</button>
+          </form>
+        </div>
+      </div>
+
+     
+      <% for(t of tweets){ %>
+      <div class="tweet">
+     <span class="menu-btn"><i class="fa-solid fa-ellipsis-vertical"></i></span>
+
+  <div class="menu">
+    <a href="/tweets/edit/<%=t.id%>">Edit</a>
+   <form method="post" action="/tweets/delete/<%=t.id%>?_method=DELETE">
+    
+    <button type="submit" style="background:none; border:none; color:white; cursor:pointer;">
+      delete
+    </button>
+   </form>
+  </div>
+        <h3>@<%=t.user%>
+          <%if(t.verified==true){%>
+          <i class="fa-solid fa-circle-check"></i>
+        <%}%>
+        </h3>
+        <p>
+         <%=t.content%>
+          <br><br>
+         
+          <a class="show">show more</a>
+        </p>
+        <div class="tweet-stats">
+          <span><i class="fa-regular fa-comment"></i> <%=t.comments%></span>
+          <span><i class="fa-solid fa-retweet"></i> <%=t.retweets%></span>
+          <span><i class="fa-regular fa-heart"></i> <%=t.likes%></span>
+          <span><i class="fa-regular fa-eye"></i> <%=t.views%></span>
+        </div>
+      </div>
+
+ <%}%>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="right-sidebar"  style="position: sticky;" >
+      <div class="subscribe">
+        <h3>Subscribe to Premium</h3>
+        <p>Subscribe to unlock new features and if eligible, receive a share of revenue.</p><br><br>
+        <button>Subscribe</button>
+      </div>
+
+      <div class="news">
+        <h3>Today’s News</h3>
+        <br><br>
+        <ul>
+          <li><strong>Radhakrishnan</strong> Favored in India's Vice President Election</li>
+          <br>
+          <li>PM Modi Surveys Devastating Floods in Himachal and Punjab</li>
+          <br>
+          <li>Narendra Modi Tackles Northern India's Flood Catastrophe</li>
+
+        </ul>
+      </div>
+      <div class="news" style="margin-top: 10px;">
+        <h3>Who to follow</h3>
+         <div class="follow-card">
+    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Rohit Sharma">
+    <div class="user-info">
+      <strong>Rohit Sharma <i class="fa-solid fa-circle-check"></i></strong>
+      <span>@ImRo45</span>
+    </div>
+    <button class="follow-btn">Follow</button>
+  </div>
+
+  <div class="follow-card">
+    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Barack Obama">
+    <div class="user-info">
+      <strong>Barack Obama <i class="fa-solid fa-circle-check"></i> <i class="fa-solid fa-landmark"></i></strong>
+      <span>@BarackObama</span>
+    </div>
+    <button class="follow-btn">Follow</button>
+  </div>
+
+  <div class="follow-card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Android_logo_2019.png" alt="Android">
+    <div class="user-info">
+      <strong>Android <i class="fa-solid fa-square-check" style="color:gold;"></i></strong>
+      <span>@Android</span>
+    </div>
+    <button class="follow-btn">Follow</button>
+  </div>
+         <p style="color:#1d9bf0 ;  " class="show">show more</p>
+      </div>
+
+    </aside>
+  </div>
+ 
+</body>
+
+  <script>
+  // Select all menu buttons
+  const menuButtons = document.querySelectorAll(".menu-btn");
+
+  menuButtons.forEach(btn => {
+    btn.addEventListener("click", e => {
+      // prevent triggering click on parent
+      e.stopPropagation();
+
+      // Hide all other menus
+      document.querySelectorAll(".menu").forEach(menu => {
+        if (menu !== btn.nextElementSibling) {
+          menu.classList.remove("show");
+        }
+      });
+
+     
+      btn.nextElementSibling.classList.toggle("show");
+    });
+  });
+
+  // Hide menus if you click anywhere else
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".menu").forEach(menu => menu.classList.remove("show"));
+  });
+</script>
+
+
+
+</html>
