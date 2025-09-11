@@ -6,6 +6,15 @@ It lets you post tweets, view them in a timeline, and delete them.
 
 ---
 
+## ⚙️ Prerequisites
+
+Make sure you have **Node.js** installed on your system.  
+Download it here → [https://nodejs.org/](https://nodejs.org/) (LTS version recommended).
+
+Check installation:
+```bash
+node -v
+npm -v
 
 ## ⚡ Features
 
