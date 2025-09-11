@@ -15,6 +15,8 @@ Check installation:
 ```bash
 node -v
 npm -v
+```
+---
 
 ## ⚡ Features
 
