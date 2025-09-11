@@ -1,0 +1,258 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.show{
+  color: #1d9bf0;
+}
+.show:hover{
+  text-decoration: underline;
+  cursor: pointer;
+
+}
+body {
+  background-color: #000;
+  color: #e7e9ea;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Sidebar */
+.sidebar {
+
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  border-right: 1px solid #2f3336;
+  gap: 1rem;
+}
+
+.sidebar .logo {
+  font-size: 1.8rem;
+ 
+}
+
+.sidebar nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.sidebar nav li {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #e7e9ea;
+}
+
+.sidebar nav li:hover {
+  color: #1d9bf0;
+}
+
+
+
+.sidebar .profile {
+  background: #f91880;
+  color: white;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-top: auto;
+  cursor: pointer;
+}
+
+/* Feed */
+.feed {
+  width:4rem;
+  flex: 1;
+  border-right: 1px solid #2f3336;
+}
+
+/* Feed Header */
+.feed-header {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #2f3336;
+  font-weight: bold;
+}
+
+.feed-header .tab {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  color: #71767b;
+}
+
+.feed-header .tab.active {
+  color: #e7e9ea;
+  border-bottom: 3px solid #1d9bf0;
+}
+
+/* What's Happening */
+.whats-happening {
+  padding: 1rem;
+  border-bottom: 1px solid #2f3336;
+}
+
+.wh-box {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.profile-pic {
+  background: #f91880;
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.wh-box input {
+  flex: 1;
+  background:transparent;
+  border: none;
+  outline: none;
+  color: #e7e9ea;
+  font-size: 1.1rem;
+}
+
+.wh-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+
+.wh-actions .icons {
+  display: flex;
+  gap: 1rem;
+  color: #1d9bf0;
+  font-size: 1.2rem;
+}
+
+.wh-actions .post-btn {
+  background-color: grey;
+  color: black;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color .3s;
+}
+
+.wh-actions .post-btn:hover{
+  background-color: white;
+}
+/* Tweets */
+.tweet {
+  padding: 1rem;
+  border-bottom: 1px solid #2f3336;
+}
+
+.tweet h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tweet h3 i {
+  color: #1d9bf0;
+  margin-left: 0.3rem;
+}
+
+.tweet p {
+  line-height: 1.5;
+  margin-bottom: 0.7rem;
+}
+
+.tweet-stats {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.9rem;
+  color: #71767b;
+}
+
+.tweet-stats span {
+  cursor: pointer;
+}
+
+.tweet-stats span:hover {
+  color: #1d9bf0;
+}
+
+/* Right Sidebar */
+/* .right-sidebar {
+
+ 
+  width: 300px;
+  padding: 1rem;
+} */
+ .right-sidebar {
+  position: fixed;  /* Sidebar stays in place even on scroll */
+  top: 0;           /* Distance from top */
+  right: 0;         /* Distance from right */
+  width: 350px;
+  padding: 1rem;
+}
+
+
+.subscribe {
+
+  background: #16181c;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.subscribe h3 {
+  margin-bottom: 0.5rem;
+}
+
+.subscribe button {
+  background: #1d9bf0;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.news {
+  background: #16181c;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.news h3 {
+  margin-bottom: 0.5rem;
+}
+
+.news ul {
+  list-style: none;
+}
+
+.news li {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}

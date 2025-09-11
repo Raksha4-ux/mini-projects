@@ -1,0 +1,75 @@
+
+    body {
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .follow-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      border-bottom: 1px solid #333;
+    }
+
+    .follow-card img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 12px;
+    }
+
+    .user-info {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .user-info strong {
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .user-info strong i {
+      color: #1DA1F2; /* Twitter blue for verified */
+      margin-left: 5px;
+      font-size: 14px;
+    }
+
+    .user-info span {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .follow-btn {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .follow-btn:hover {
+      background-color: #e6e6e6;
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      .follow-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .follow-btn {
+        align-self: flex-end;
+      }
+    }
+  
