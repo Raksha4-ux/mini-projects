@@ -1,0 +1,147 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+
+  background-color:#efe7d3;
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+.completed {
+  text-decoration: line-through;
+  text-decoration-color: red ;
+  text-decoration-thickness:3px;
+}
+.box{
+  border-radius: 20px;
+  display: inline-block;
+  padding: 50px 60px;
+  margin:0;
+  background-color:#f8c0c8;
+  box-shadow: 4px 6px 7px rgba(0,0,0,0.4);
+}
+.todo{
+  margin-top: 40px;
+  display: inline-block;
+  background-color:#d3bbdd ;
+  margin-bottom: 40px;
+  padding: 5px 14px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+    box-shadow: 4px 6px 7px rgba(0,0,0,0.4);
+
+}
+.items{
+ text-align: left;
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #777;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* When hovered */
+input[type="checkbox"]:hover {
+  border-color: #333;
+}
+
+/* When checked */
+input[type="checkbox"]:checked {
+  background-color: #4caf50; /* green background */
+  border-color: #4caf50;
+}
+
+/* Create the checkmark */
+input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Optional — animation on check */
+input[type="checkbox"]:checked {
+  transform: scale(1.1);
+  transition: transform 0.1s ease;
+}
+
+input[type="text"] {
+  width: 250px;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+input[type="text"]:focus {
+  border-color: #d3bbdd;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+}
+
+/* Add Button */
+button {
+  background-color: #ece3f0;
+  color: black;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+button:hover {
+  background-color: #ece3f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+button:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.delete-btn {
+  
+  
+  border-radius: 20px;
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.delete-btn:hover {
+  color: #c0392b;
+}
